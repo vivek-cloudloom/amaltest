@@ -52,6 +52,8 @@
 .block-features--layout--top-strip {
     .block-features__list {
         border-bottom: 2px solid map_get($body-scheme, divider);
+        background-color: #ffec7b;
+        height: 80px;
     }
 }
 .block-features--layout--bottom-strip {

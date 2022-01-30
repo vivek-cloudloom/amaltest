@@ -1,24 +1,24 @@
 // react
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef } from "react";
 // third-party
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 // application
-import AccountMenu from '~/components/header/AccountMenu';
-import AppLink from '~/components/shared/AppLink';
-import CurrencyFormat from '~/components/shared/CurrencyFormat';
-import Departments from '~/components/header/Departments';
-import Dropcart from '~/components/header/Dropcart';
-import Indicator, { IIndicatorController } from '~/components/header/Indicator';
-import Logo from '~/components/header/Logo';
-import MainMenu from '~/components/header/MainMenu';
-import Search from '~/components/header/Search';
-import Topbar from '~/components/header/Topbar';
-import url from '~/services/url';
-import { Heart32Svg, Person32Svg, Cart32Svg } from '~/svg';
-import { useCart } from '~/store/cart/cartHooks';
-import { useOptions } from '~/store/options/optionsHooks';
-import { useUser } from '~/store/user/userHooks';
-import { useWishlist } from '~/store/wishlist/wishlistHooks';
+import AccountMenu from "~/components/header/AccountMenu";
+import AppLink from "~/components/shared/AppLink";
+import CurrencyFormat from "~/components/shared/CurrencyFormat";
+import Departments from "~/components/header/Departments";
+import Dropcart from "~/components/header/Dropcart";
+import Indicator, { IIndicatorController } from "~/components/header/Indicator";
+import Logo from "~/components/header/Logo";
+import MainMenu from "~/components/header/MainMenu";
+import Search from "~/components/header/Search";
+import Topbar from "~/components/header/Topbar";
+import url from "~/services/url";
+import { Heart32Svg, Person32Svg, Cart32Svg } from "~/svg";
+import { useCart } from "~/store/cart/cartHooks";
+import { useOptions } from "~/store/options/optionsHooks";
+import { useUser } from "~/store/user/userHooks";
+import { useWishlist } from "~/store/wishlist/wishlistHooks";
 
 function Header() {
     const user = useUser();
@@ -26,11 +26,15 @@ function Header() {
     const options = useOptions();
     const desktopLayout = options.desktopHeaderLayout;
 
-    const departmentsLabel = useMemo(() => (
-        desktopLayout === 'spaceship'
-            ? <FormattedMessage id="BUTTON_DEPARTMENTS" />
-            : <FormattedMessage id="BUTTON_DEPARTMENTS_LONG" />
-    ), [desktopLayout]);
+    const departmentsLabel = useMemo(
+        () =>
+            desktopLayout === "spaceship" ? (
+                <FormattedMessage id="BUTTON_DEPARTMENTS" />
+            ) : (
+                <FormattedMessage id="BUTTON_DEPARTMENTS_LONG" />
+            ),
+        [desktopLayout]
+    );
 
     const accountIndicatorLabel = user ? user.email : <FormattedMessage id="TEXT_INDICATOR_ACCOUNT_LABEL" />;
     const accountIndicatorValue = <FormattedMessage id="TEXT_INDICATOR_ACCOUNT_VALUE" />;
@@ -39,11 +43,11 @@ function Header() {
     const cart = useCart();
     const cartIndicatorLabel = <FormattedMessage id="TEXT_INDICATOR_CART_LABEL" />;
     const cartIndicatorCtrl = useRef<IIndicatorController | null>(null);
-
+    console.log(desktopLayout);
     return (
         <div className="header">
-            <div className="header__megamenu-area megamenu-area" />
-            {desktopLayout === 'spaceship' && (
+            {/* <div className="header__megamenu-area megamenu-area" /> */}
+            {/* {desktopLayout === 'spaceship' && (
                 <React.Fragment>
                     <div className="header__topbar-start-bg" />
                     <div className="header__topbar-start">
@@ -54,17 +58,17 @@ function Header() {
                         <Topbar layout="spaceship-end" />
                     </div>
                 </React.Fragment>
-            )}
-            {desktopLayout === 'classic' && (
+            )} */}
+            {/* {desktopLayout === 'classic' && (
                 <React.Fragment>
                     <div className="header__topbar-classic-bg" />
                     <div className="header__topbar-classic">
                         <Topbar layout="classic" />
                     </div>
                 </React.Fragment>
-            )}
+            )} */}
 
-            <div className="header__navbar">
+            {/* <div className="header__navbar">
                 <div className="header__navbar-departments">
                     <Departments label={departmentsLabel} />
                 </div>
@@ -81,17 +85,17 @@ function Header() {
                         </AppLink>
                     </div>
                 )}
-            </div>
+            </div> */}
             <Logo className="header__logo" />
-            <div className="header__search">
-                <Search />
+            <div className="header_delivery">
+                <span className="header_delivery_title"><FormattedMessage id="DELIVER_TO" /></span>
+                <span className="header_delivery_location">bagdad</span>
             </div>
+            {/* <div className="header__search">
+                <Search />
+            </div> */}
             <div className="header__indicators">
-                <Indicator
-                    href={url.wishlist()}
-                    icon={<Heart32Svg />}
-                    counter={wishlist.items.length}
-                />
+                <Indicator href={url.wishlist()} icon={<Heart32Svg />} counter={wishlist.items.length} />
 
                 <Indicator
                     href={url.accountDashboard()}

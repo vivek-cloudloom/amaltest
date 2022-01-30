@@ -51,6 +51,8 @@
   "COUNTRY_NAME_UA": "Украина",
   "COUNTRY_NAME_US": "США",
 
+  "DELIVER_TO":"Deliver To",
+
   "ERROR_ADD_TO_CART_OPTIONS": "Выберите параметры товара, прежде чем добавить его в корзину.",
   "ERROR_ADD_TO_CART_QUANTITY": "Введите количество, прежде чем добавить этот товар в корзину.",
   "ERROR_API_AUTH_EMAIL_ALREADY_IN_USE": "Указанный Email адрес уже зарегистрирован.",

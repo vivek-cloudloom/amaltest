@@ -1,15 +1,26 @@
-@import '../variables';
-@import '../mixins/breakpoints';
-@import '../mixins/direction';
-@import '../mixins/header';
-
+@import "../variables";
+@import "../mixins/breakpoints";
+@import "../mixins/direction";
+@import "../mixins/header";
 
 @include desktop-header-variant-selector {
-    @if($header-layout == classic) {
+    @if ($header-layout == classic) {
         // grid
         .header {
-            $local-grid-padding-xxl: calc(100% / 2 - #{map_get($container-max-widths, xxl) - $grid-gutter-width} / 2);
-            $local-grid-padding-xl: calc(100% / 2 - #{map_get($container-max-widths, xl) - $grid-gutter-width} / 2);
+            $local-grid-padding-xxl: calc(
+                100% /
+                    2 -
+                    #{map_get($container-max-widths, xxl) -
+                    $grid-gutter-width} /
+                    2
+            );
+            $local-grid-padding-xl: calc(
+                100% /
+                    2 -
+                    #{map_get($container-max-widths, xl) -
+                    $grid-gutter-width} /
+                    2
+            );
 
             display: grid;
             grid-template-columns: $local-grid-padding-xxl min-content auto max-content $local-grid-padding-xxl;
@@ -32,12 +43,12 @@
             grid-row: 1;
         }
         .header__logo {
-            grid-column: 2;
-            grid-row: 2;
+            grid-column: 1;
+            grid-row: 1;
         }
         .header__search {
             grid-column: 3 / 3;
-            grid-row: 2;
+            grid-row: 1;
         }
         .header__navbar {
             grid-column: 1 / 6;
@@ -45,7 +56,7 @@
         }
         .header__indicators {
             grid-column: 4;
-            grid-row: 2;
+            grid-row: 1;
         }
 
         // styles
@@ -78,10 +89,24 @@
             }
         }
         .header__navbar {
-            padding: 7px calc((100% - #{map_get($container-max-widths, xxl) - $grid-gutter-width}) / 2);
+            padding: 7px
+                calc(
+                    (
+                            100% -
+                                #{map_get($container-max-widths, xxl) -
+                                $grid-gutter-width}
+                        ) /
+                        2
+                );
 
             @include media-breakpoint-only(xl) {
-                padding: 7px calc((100% - #{map_get($container-max-widths, xl) - $grid-gutter-width}) / 2);
+                padding: 7px
+                    calc(
+                        (
+                                100% - #{map_get($container-max-widths, xl) -
+                                    $grid-gutter-width}
+                            ) / 2
+                    );
             }
         }
         .header__navbar-menu {
@@ -102,7 +127,7 @@
             &:after {
                 display: block;
                 position: absolute;
-                content: '';
+                content: "";
                 background: transparent;
                 width: 1px;
                 height: 100%;
@@ -135,10 +160,9 @@
             }
         }
 
-
         // define scheme
         .header {
-            background: map_get($header-scheme, main);
+            background: #a240b7; //map_get($header-scheme, main);
             color: map_get($header-scheme, opposite);
             box-shadow: map_get($navbar-scheme, shadow);
         }
@@ -146,9 +170,12 @@
             background: map_get($topbar-classic-scheme, main);
         }
 
-        @if(map_get($header-scheme, main) == map_get($topbar-classic-scheme, main)) {
+        @if (
+            map_get($header-scheme, main) ==
+                map_get($topbar-classic-scheme, main)
+        ) {
             .header {
-                grid-template-rows: 36px auto auto;
+                grid-template-rows: 80px auto auto;
             }
             .header__topbar-classic-bg {
                 border-bottom: 1px solid map_get($header-scheme, divider);
@@ -164,7 +191,7 @@
             color: map_get($navbar-scheme, opposite);
         }
 
-        @if(map_get($header-scheme, main) == map_get($navbar-scheme, main)) {
+        @if (map_get($header-scheme, main) == map_get($navbar-scheme, main)) {
             .header__navbar {
                 border-top: 1px solid map_get($header-scheme, divider);
 
@@ -184,10 +211,33 @@
             }
         }
 
-        @if (map_get($navbar-scheme, main) == map_get(map_get($departments-button-scheme, normal), main)) {
+        @if (
+            map_get($navbar-scheme, main) ==
+                map_get(map_get($departments-button-scheme, normal), main)
+        ) {
             .header__navbar-departments:after {
                 background: map_get($navbar-scheme, divider);
             }
+        }
+    }
+
+    .header_delivery {
+        display: flex;
+        align-content: center;
+        width: 150px;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        color: white;
+        align-items: flex-end;
+        .header_delivery_title {
+            opacity: .5;
+            font-size: 0.75rem;
+        }
+
+        .header_delivery_location {
+            text-transform: capitalize;
+            font-size: 0.875rem;
         }
     }
 }

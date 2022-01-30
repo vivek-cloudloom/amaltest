@@ -35,7 +35,7 @@ function BlockSlideshow(props: Props) {
 
     return (
         <div className="block block-slideshow">
-            <div className="container">
+            <div className="">
                 <div className="block-slideshow__carousel">
                     <AppSlick {...slickSettings}>
                         {slides.map((slide, slideIdx) => (

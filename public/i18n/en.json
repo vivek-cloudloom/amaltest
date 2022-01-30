@@ -51,6 +51,8 @@
   "COUNTRY_NAME_UA": "Ukraine",
   "COUNTRY_NAME_US": "United States",
 
+  "DELIVER_TO":"Deliver To",
+
   "ERROR_ADD_TO_CART_OPTIONS": "Please select product options before adding this product to your cart.",
   "ERROR_ADD_TO_CART_QUANTITY": "Please enter quantity before adding this product to cart.",
   "ERROR_API_AUTH_EMAIL_ALREADY_IN_USE": "The specified email address is already registered.",
